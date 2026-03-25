@@ -19,13 +19,6 @@
     /* ── STARS ── */
     #stars-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 
-    /* ── CRACK OVERLAY ── */
-    #crack-svg{
-      position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;pointer-events:none;
-      opacity:0;transition:opacity 0.1s;
-    }
-    #crack-svg.show{opacity:1;}
-
     /* ── NAV ── */
     nav{
       position:fixed;top:0;width:100%;z-index:100;
@@ -39,7 +32,6 @@
       color:var(--gold);text-shadow:0 0 18px var(--gold-glow);letter-spacing:3px;
       text-decoration:none;display:flex;align-items:center;gap:10px;
     }
-    .nav-logo-icon{width:22px;height:22px;display:inline-block;}
     .nav-links{display:flex;gap:38px;list-style:none;}
     .nav-links a{
       font-family:'Orbitron',monospace;font-size:0.65rem;letter-spacing:3px;
@@ -58,21 +50,19 @@
       text-align:center;padding:100px 40px 60px;position:relative;z-index:1;
     }
     .hero-init{
-      font-family:'Share Tech Mono',monospace;font-size:0.8rem;
-      color:var(--gold);letter-spacing:6px;text-transform:uppercase;
-      margin-bottom:22px;opacity:.85;
-      display:inline-block;
+      font-family:'Share Tech Mono',monospace;font-size:0.78rem;
+      color:var(--gold);letter-spacing:5px;text-transform:uppercase;
+      margin-bottom:22px;opacity:.85;display:inline-block;
     }
-    /* glitch on init text */
     @keyframes glitchShift{
-      0%,94%{transform:none;text-shadow:none;clip-path:none;}
-      95%{transform:translate(-3px,0);text-shadow:-2px 0 #ff0040,2px 0 #00ffff;clip-path:polygon(0 20%,100% 20%,100% 40%,0 40%);}
-      96%{transform:translate(3px,0);text-shadow:2px 0 #ff0040,-2px 0 #00ffff;clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);}
-      97%{transform:translate(-2px,1px);clip-path:polygon(0 0,100% 0,100% 35%,0 35%);}
-      98%{transform:translate(2px,-1px);text-shadow:-2px 0 #ff0040;clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);}
-      100%{transform:none;text-shadow:none;clip-path:none;}
+      0%,92%{transform:none;text-shadow:none;clip-path:none;opacity:.85;}
+      93%{transform:translate(-3px,0);text-shadow:-2px 0 #ff0040,2px 0 #00ffff;clip-path:polygon(0 20%,100% 20%,100% 40%,0 40%);opacity:1;}
+      94%{transform:translate(3px,0);text-shadow:2px 0 #ff0040,-2px 0 #00ffff;clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);opacity:1;}
+      95%{transform:translate(-2px,1px);clip-path:polygon(0 0,100% 0,100% 35%,0 35%);opacity:.9;}
+      96%{transform:translate(2px,-1px);text-shadow:-2px 0 #ff0040;clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);opacity:1;}
+      97%,100%{transform:none;text-shadow:none;clip-path:none;opacity:.85;}
     }
-    .hero-init{animation:glitchShift 4s infinite;}
+    .hero-init{animation:glitchShift 5s infinite;}
 
     .hero-title{
       font-family:'Orbitron',monospace;
@@ -81,7 +71,6 @@
     }
     .hero-title span{color:var(--gold);text-shadow:0 0 28px var(--gold-glow);}
 
-    /* glitch-in subtitle */
     .hero-sub{
       font-family:'Share Tech Mono',monospace;
       font-size:clamp(0.9rem,2vw,1.35rem);
@@ -118,7 +107,7 @@
     .scroll-line{width:1px;height:46px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite;}
     @keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
 
-    /* ── SECTION HEADINGS ── */
+    /* ── SECTIONS ── */
     section{position:relative;z-index:1;}
     .section-wrap{max-width:1200px;margin:0 auto;padding:100px 60px;}
     .section-heading{text-align:center;margin-bottom:64px;}
@@ -133,7 +122,7 @@
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
     .about-text p{color:var(--text-dim);line-height:1.85;font-size:1.05rem;margin-bottom:18px;font-weight:300;}
     .about-text p strong{color:var(--gold);font-weight:600;}
-    .about-text .af-badge{
+    .af-badge{
       display:inline-flex;align-items:center;gap:8px;
       border:1px solid var(--gold-dim);
       background:rgba(255,215,0,0.05);
@@ -148,16 +137,12 @@
       display:flex;align-items:center;gap:18px;
     }
     .stat-card:hover{transform:translateX(5px);box-shadow:-4px 0 20px var(--gold-glow);}
-    .stat-card-icon{
-      width:40px;height:40px;flex-shrink:0;
-      display:flex;align-items:center;justify-content:center;
-    }
+    .stat-card-icon{width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
     .stat-card-icon svg{width:28px;height:28px;}
     .stat-card-body h3{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:var(--gold);}
     .stat-card-body p{font-size:.8rem;color:var(--text-dim);letter-spacing:1px;margin-top:3px;}
 
     /* ── PROJECTS ── */
-    #projects .section-wrap{max-width:1300px;}
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:28px;}
     .project-card{
       background:var(--dark2);border:1px solid #1c1c1c;
@@ -176,11 +161,7 @@
     .project-card h3{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:4px;}
     .project-card p{color:var(--text-dim);font-size:.9rem;line-height:1.75;font-weight:300;padding:10px 26px 0;}
     .project-tags{display:flex;flex-wrap:wrap;gap:7px;padding:14px 26px;}
-    .tag{
-      padding:3px 13px;background:rgba(255,255,255,.03);
-      border:1px solid #2a2a2a;border-radius:2px;
-      font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--text-dim);letter-spacing:1px;
-    }
+    .tag{padding:3px 13px;background:rgba(255,255,255,.03);border:1px solid #2a2a2a;border-radius:2px;font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--text-dim);letter-spacing:1px;}
     .project-actions{display:flex;gap:10px;padding:12px 26px 26px;}
     .btn-card{
       padding:8px 20px;font-family:'Orbitron',monospace;font-size:.58rem;
@@ -209,12 +190,37 @@
     }
     .skill-icon svg{width:20px;height:20px;}
     .skill-card h3{font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
-    .skill-item{margin-bottom:13px;}
+    .skill-item{margin-bottom:14px;}
     .skill-item-header{display:flex;justify-content:space-between;margin-bottom:5px;}
     .skill-name{font-size:.88rem;color:var(--text);}
-    .skill-level{font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--gold);}
-    .skill-bar{height:2px;background:#222;border-radius:1px;overflow:hidden;}
-    .skill-fill{height:100%;background:linear-gradient(to right,var(--gold-dim),var(--gold));border-radius:1px;width:0;transition:width 1.3s ease;}
+    .skill-level{font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--gold-dim);}
+    .skill-bar-track{height:3px;background:#1e1e1e;border-radius:1px;overflow:visible;position:relative;}
+    .skill-fill{height:100%;border-radius:1px;width:0;transition:width 1.3s ease;position:relative;}
+
+    /* level-based bar colors */
+    .skill-fill[data-lvl="beginner"]   { background: linear-gradient(to right,#3a2800,#7a5200); }
+    .skill-fill[data-lvl="intermediate"]{ background: linear-gradient(to right,#6b5100,#b88a00); }
+    .skill-fill[data-lvl="experienced"] { background: linear-gradient(to right,#9a7800,#d4aa00); }
+    .skill-fill[data-lvl="proficient"]  { background: linear-gradient(to right,#b8960c,#ffd700); }
+    .skill-fill[data-lvl="advanced"]    { background: linear-gradient(to right,#ffd700,#fff4a3); box-shadow: 0 0 6px rgba(255,215,0,0.5); }
+
+    /* ── SKILL LEGEND ── */
+    .skill-legend{
+      margin-bottom:40px;
+      display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+    }
+    .legend-item{
+      display:flex;align-items:center;gap:7px;
+      padding:5px 14px;border:1px solid #222;border-radius:2px;
+      background:var(--dark2);font-family:'Share Tech Mono',monospace;font-size:.65rem;
+      letter-spacing:1px;color:var(--text-dim);
+    }
+    .legend-dot{width:8px;height:3px;border-radius:1px;}
+    .legend-dot.beginner   { background:linear-gradient(to right,#3a2800,#7a5200); }
+    .legend-dot.intermediate{ background:linear-gradient(to right,#6b5100,#b88a00); }
+    .legend-dot.experienced { background:linear-gradient(to right,#9a7800,#d4aa00); }
+    .legend-dot.proficient  { background:linear-gradient(to right,#b8960c,#ffd700); }
+    .legend-dot.advanced    { background:linear-gradient(to right,#ffd700,#fff4a3);box-shadow:0 0 4px rgba(255,215,0,0.5); }
 
     /* ── CONTACT ── */
     #contact .section-wrap{max-width:860px;text-align:center;}
@@ -232,11 +238,7 @@
     .contact-card p{font-size:.82rem;color:var(--text-dim);}
 
     /* ── FOOTER ── */
-    footer{
-      position:relative;z-index:1;padding:22px 60px;
-      border-top:1px solid #151515;
-      display:flex;justify-content:space-between;align-items:center;
-    }
+    footer{position:relative;z-index:1;padding:22px 60px;border-top:1px solid #151515;display:flex;justify-content:space-between;align-items:center;}
     footer p{font-size:.75rem;color:#333;font-family:'Share Tech Mono',monospace;}
     footer a{color:var(--gold-dim);text-decoration:none;}
     footer a:hover{color:var(--gold);}
@@ -253,35 +255,12 @@
   </style>
 </head>
 <body>
-<!-- CRACK SVG OVERLAY -->
-<svg id="crack-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-  <g stroke="rgba(255,215,0,0.55)" stroke-width="1.2" fill="none" filter="url(#glow)">
-    <defs>
-      <filter id="glow"><feGaussianBlur stdDeviation="1.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <!-- main crack radiating from upper-right area -->
-    <path d="M 1100 80 L 980 210 L 1060 280 L 880 420 L 950 500 L 820 620"/>
-    <path d="M 980 210 L 870 190 L 820 240"/>
-    <path d="M 1060 280 L 1140 320 L 1110 380"/>
-    <path d="M 880 420 L 790 400 L 730 450"/>
-    <path d="M 880 420 L 920 480 L 900 540 L 960 580"/>
-    <path d="M 820 620 L 760 650 L 780 700"/>
-    <path d="M 820 620 L 870 670 L 840 730"/>
-    <!-- tiny hairline splinters -->
-    <path d="M 1100 80 L 1160 60 L 1200 100" stroke-width="0.6"/>
-    <path d="M 1100 80 L 1080 40" stroke-width="0.6"/>
-    <path d="M 870 190 L 840 160 L 860 130" stroke-width="0.6"/>
-    <path d="M 730 450 L 680 440 L 650 470" stroke-width="0.6"/>
-    <path d="M 960 580 L 1010 600 L 1000 650" stroke-width="0.6"/>
-  </g>
-</svg>
-
 <canvas id="stars-canvas"></canvas>
 
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <svg class="nav-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
       <polygon points="12,2 20,8 20,16 12,22 4,16 4,8" stroke="#FFD700" stroke-width="1.5" fill="rgba(255,215,0,0.08)"/>
       <line x1="12" y1="2" x2="12" y2="22" stroke="#FFD700" stroke-width="0.8" opacity="0.5"/>
       <line x1="4" y1="8" x2="20" y2="16" stroke="#FFD700" stroke-width="0.8" opacity="0.5"/>
@@ -299,13 +278,13 @@
 
 <!-- HERO -->
 <section id="hero">
-  <span class="hero-init" id="hero-init">// SYSTEM BOOT — DRAIN1LY.IO</span>
+  <span class="hero-init" id="hero-init">// INITIALIZING.. DRAIN1LY DEVELOPMENT PORTFOLIO</span>
   <h1 class="hero-title">Full-Stack<br/><span>Developer</span></h1>
   <div class="hero-sub" id="hero-sub"></div>
-  <p class="hero-desc">4th year Computer Science student &amp; Air Force ROTC Officer Select — building web applications, game systems, and interactive experiences across the full stack.</p>
+  <p class="hero-desc">4th year Computer Science student &amp; soon-to-be commissioned Air Force Officer Select — building web applications, game systems, and interactive experiences across the full stack.</p>
   <div class="hero-buttons">
     <a href="#projects" class="btn-primary">View My Work</a>
-    <a href="#contact" class="btn-secondary">Open Comms</a>
+    <a href="#contact" class="btn-secondary">Contact Me</a>
   </div>
   <div class="scroll-indicator">
     <span>Scroll</span>
@@ -326,9 +305,9 @@
       <div class="about-text">
         <div class="af-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 7v10l8 5 8-5V7L12 2z" stroke="#FFD700" stroke-width="1.5" fill="rgba(255,215,0,0.1)"/><path d="M12 2v20M4 7l8 5 8-5" stroke="#FFD700" stroke-width="0.8" opacity="0.6"/></svg>
-          Air Force ROTC — Officer Select
+          Air Force ROTC — Soon-to-be Commissioned Officer Select
         </div>
-        <p>I'm a <strong>4th-year Computer Science student</strong> and commissioned Air Force Officer Select. I build things that work at every layer — clean frontends, robust backends, and systems that scale.</p>
+        <p>I'm a <strong>4th-year Computer Science student</strong> and soon to be commissioned Air Force Officer Select. I build things that work at every layer — clean frontends, robust backends, and systems that scale.</p>
         <p>My stack includes <strong>React, Node.js, HTML, CSS, and JavaScript</strong> on the web side, <strong>Java and C++</strong> for systems work, and <strong>Python and Lua</strong> for scripting and game development. I've shipped real projects — including a collaborative interactive archive deployed on the web.</p>
         <p>I bring the same discipline to writing code as I do to ROTC — precision, accountability, and getting the mission done.</p>
       </div>
@@ -349,7 +328,7 @@
           <div class="stat-card-icon">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 7v10l8 5 8-5V7L12 2z" stroke="#FFD700" stroke-width="1.5"/><path d="M12 12v10M12 12L4 7M12 12l8-5" stroke="#FFD700" stroke-width="0.8" opacity="0.6"/></svg>
           </div>
-          <div class="stat-card-body"><h3>Officer Select</h3><p>Air Force ROTC — 4th Year</p></div>
+          <div class="stat-card-body"><h3>Officer Select</h3><p>Air Force ROTC — Commissioning Soon</p></div>
         </div>
         <div class="stat-card">
           <div class="stat-card-icon">
@@ -363,6 +342,7 @@
 </section>
 
 <div class="gold-divider"></div>
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-wrap" style="max-width:1300px;">
@@ -371,7 +351,6 @@
       <div class="section-line"></div>
     </div>
     <div class="projects-grid">
-
       <div class="project-card">
         <div class="project-card-header">
           <div class="project-badge">
@@ -396,7 +375,6 @@
           </a>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-card-header">
           <div class="project-badge">
@@ -417,13 +395,11 @@
           </a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <div class="gold-divider"></div>
-
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-wrap">
@@ -431,8 +407,19 @@
       <h2>Tech <span>Skills</span></h2>
       <div class="section-line"></div>
     </div>
+
+    <!-- PROFICIENCY LEGEND -->
+    <div class="skill-legend">
+      <div class="legend-item"><div class="legend-dot beginner"></div>Beginner</div>
+      <div class="legend-item"><div class="legend-dot intermediate"></div>Intermediate</div>
+      <div class="legend-item"><div class="legend-dot experienced"></div>Experienced</div>
+      <div class="legend-item"><div class="legend-dot proficient"></div>Proficient</div>
+      <div class="legend-item"><div class="legend-dot advanced"></div>Advanced</div>
+    </div>
+
     <div class="skills-grid">
 
+      <!-- Languages -->
       <div class="skill-card">
         <div class="skill-card-header">
           <div class="skill-icon">
@@ -440,12 +427,29 @@
           </div>
           <h3>Languages</h3>
         </div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">Java</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">C++</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="84"></div></div></div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">JavaScript</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">Python</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+        <!-- Java: Advanced ~90% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">Java</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="90" data-lvl="advanced"></div></div>
+        </div>
+        <!-- C++: Advanced ~87% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">C++</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="87" data-lvl="advanced"></div></div>
+        </div>
+        <!-- JavaScript: Experienced ~72% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">JavaScript</span><span class="skill-level">Experienced</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="72" data-lvl="experienced"></div></div>
+        </div>
+        <!-- Python: Intermediate ~48% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">Python</span><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="48" data-lvl="intermediate"></div></div>
+        </div>
       </div>
 
+      <!-- Frontend -->
       <div class="skill-card">
         <div class="skill-card-header">
           <div class="skill-icon">
@@ -453,11 +457,24 @@
           </div>
           <h3>Frontend</h3>
         </div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">React</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">HTML5</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-width="83"></div></div></div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">CSS3</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-width="79"></div></div></div>
+        <!-- React: Proficient ~78% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">React</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="78" data-lvl="proficient"></div></div>
+        </div>
+        <!-- HTML5: Proficient ~80% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">HTML5</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="80" data-lvl="proficient"></div></div>
+        </div>
+        <!-- CSS3: Proficient ~76% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">CSS3</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="76" data-lvl="proficient"></div></div>
+        </div>
       </div>
 
+      <!-- Backend & APIs -->
       <div class="skill-card">
         <div class="skill-card-header">
           <div class="skill-icon">
@@ -465,10 +482,19 @@
           </div>
           <h3>Backend &amp; APIs</h3>
         </div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">Node.js</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-width="77"></div></div></div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">REST APIs</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" data-width="74"></div></div></div>
+        <!-- Node.js: Proficient ~75% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">Node.js</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="75" data-lvl="proficient"></div></div>
+        </div>
+        <!-- REST APIs: Proficient ~73% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">REST APIs</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="73" data-lvl="proficient"></div></div>
+        </div>
       </div>
 
+      <!-- Game Dev -->
       <div class="skill-card">
         <div class="skill-card-header">
           <div class="skill-icon">
@@ -476,8 +502,16 @@
           </div>
           <h3>Game Dev</h3>
         </div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">Roblox Studio</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="58"></div></div></div>
-        <div class="skill-item"><div class="skill-item-header"><span class="skill-name">Lua</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="52"></div></div></div>
+        <!-- Lua: Experienced ~65% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">Lua</span><span class="skill-level">Experienced</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="65" data-lvl="experienced"></div></div>
+        </div>
+        <!-- Roblox Studio: Beginner ~25% -->
+        <div class="skill-item">
+          <div class="skill-item-header"><span class="skill-name">Roblox Studio</span><span class="skill-level">Beginner</span></div>
+          <div class="skill-bar-track"><div class="skill-fill" data-width="25" data-lvl="beginner"></div></div>
+        </div>
       </div>
 
     </div>
@@ -537,8 +571,7 @@
       stars.push({
         x:Math.random()*canvas.width,y:Math.random()*canvas.height,
         r:Math.random()*1.1+0.15,alpha:Math.random(),
-        speed:Math.random()*0.004+0.001,
-        gold:Math.random()<0.12
+        speed:Math.random()*0.004+0.001,gold:Math.random()<0.12
       });
     }
   }
@@ -557,51 +590,25 @@
   window.addEventListener('resize',()=>{resize();initStars();});
 })();
 
-// ── CRACK TRIGGER ──
-(function(){
-  const svg=document.getElementById('crack-svg');
-  let shown=false;
-  // Show crack when user scrolls past hero
-  window.addEventListener('scroll',function onScroll(){
-    if(!shown && window.scrollY > window.innerHeight * 0.6){
-      shown=true;
-      svg.classList.add('show');
-      setTimeout(()=>svg.classList.remove('show'),900);
-      window.removeEventListener('scroll',onScroll);
-    }
-  });
-  // Also flash crack randomly every 18-30s after page load
-  function randomCrack(){
-    svg.classList.add('show');
-    setTimeout(()=>svg.classList.remove('show'),700);
-    setTimeout(randomCrack, 18000+Math.random()*12000);
-  }
-  setTimeout(randomCrack, 22000);
-})();
-
-// ── HERO INIT GLITCH (extra random bursts) ──
+// ── HERO INIT GLITCH (random scramble bursts) ──
 (function(){
   const el=document.getElementById('hero-init');
-  const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+  const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*[]{}|';
   const original=el.textContent;
   function scrambleBurst(){
-    let count=0;
-    const max=14;
+    let count=0,max=16;
     const iv=setInterval(()=>{
       count++;
       if(count>max){clearInterval(iv);el.textContent=original;return;}
       let out='';
       for(let i=0;i<original.length;i++){
-        out+=Math.random()<0.35?CHARS[Math.floor(Math.random()*CHARS.length)]:original[i];
+        out+=Math.random()<0.3?CHARS[Math.floor(Math.random()*CHARS.length)]:original[i];
       }
       el.textContent=out;
     },55);
   }
-  // trigger extra scramble bursts every 6-12s
-  function scheduleBurst(){
-    setTimeout(()=>{scrambleBurst();scheduleBurst();},6000+Math.random()*6000);
-  }
-  scheduleBurst();
+  function schedule(){setTimeout(()=>{scrambleBurst();schedule();},6000+Math.random()*7000);}
+  schedule();
 })();
 
 // ── HERO SUBTITLE — GLITCH-IN EFFECT ──
@@ -615,49 +622,35 @@
     'Game Dev — Roblox / Lua',
     'Full-Stack Builder'
   ];
-  const GLYPHS='!<>-_\/[]{}—=+*^?#|~';
+  const GLYPHS='!<>-_\/[]{}—=+*^?#|~@$';
   let pi=0;
-
-  function glitchReveal(target, done){
-    const len=target.length;
-    let frame=0;
-    const totalFrames=22;
+  function glitchReveal(target,done){
+    const len=target.length;let frame=0,total=22;
     const iv=setInterval(()=>{
       frame++;
       let out='';
       for(let i=0;i<len;i++){
-        if(frame/totalFrames > i/len){
-          // revealed
-          out+=target[i];
-        } else {
-          // glitching
-          out+=Math.random()<0.6?GLYPHS[Math.floor(Math.random()*GLYPHS.length)]:target[i];
-        }
+        if(frame/total>i/len){out+=target[i];}
+        else{out+=Math.random()<0.55?GLYPHS[Math.floor(Math.random()*GLYPHS.length)]:target[i];}
       }
-      // occasionally inject a full corrupt flash
-      if(Math.random()<0.08){
-        out='';
-        for(let i=0;i<len;i++) out+=GLYPHS[Math.floor(Math.random()*GLYPHS.length)];
-      }
+      if(Math.random()<0.07){out='';for(let i=0;i<len;i++)out+=GLYPHS[Math.floor(Math.random()*GLYPHS.length)];}
       el.textContent=out;
-      if(frame>=totalFrames){clearInterval(iv);el.textContent=target;done&&done();}
+      if(frame>=total){clearInterval(iv);el.textContent=target;done&&done();}
     },45);
   }
-
   function cycle(){
     const phrase=phrases[pi];
     glitchReveal(phrase,()=>{
       setTimeout(()=>{
-        // glitch-out before switching
         let flashes=0;
         const out=setInterval(()=>{
           flashes++;
           if(flashes>6){clearInterval(out);pi=(pi+1)%phrases.length;setTimeout(cycle,300);return;}
           let s='';
-          for(let i=0;i<phrase.length;i++) s+=Math.random()<0.7?GLYPHS[Math.floor(Math.random()*GLYPHS.length)]:phrase[i];
+          for(let i=0;i<phrase.length;i++)s+=Math.random()<0.65?GLYPHS[Math.floor(Math.random()*GLYPHS.length)]:phrase[i];
           el.textContent=s;
         },60);
-      },2200);
+      },2400);
     });
   }
   setTimeout(cycle,900);
